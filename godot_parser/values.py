@@ -34,10 +34,11 @@ primitive = (
 value = Forward()
 
 # Vector2( 1, 2 )
+# May not have args: PackedStringArray()
 obj_type = (
     Word(alphas, alphanums).set_results_name("object_name")
     + Suppress("(")
-    + DelimitedList(value)
+    + Opt(DelimitedList(value))
     + Suppress(")")
 ).set_parse_action(GDObject.from_parser)
 
